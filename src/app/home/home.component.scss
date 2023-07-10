@@ -1,0 +1,86 @@
+.banner {
+  display: grid;
+  background: url('/assets/images/summer_banner.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  &-container {
+    max-width: 900px;
+    padding: 24pt 0;
+    margin: 0 auto;
+  }
+  &-header {
+    font-size: 45px;
+    text-align: center;
+    @media only screen and (min-width: 992px) {
+      text-align: left;
+    }
+  }
+  &-description {
+    font-size: 25px;
+    font-weight: 500;
+    color: #48484a;
+    padding: 0 10px;
+    @media only screen and (min-width: 768px) {
+      padding: 0;
+    }
+  }
+}
+.text {
+  width: 100%;
+  @media only screen and (min-width: 768px) {
+    width: 60%;
+  }
+}
+
+.search-container {
+  position: relative;
+  padding-top: 25px;
+  display: grid;
+  grid-gap: 16pt;
+}
+.grid-5-4 {
+  grid-template-columns: minmax(0, 1fr);
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+  }
+}
+
+.page {
+  max-width: 900px;
+  margin: auto;
+  color: #48484a;
+}
+.gray {
+  background-color: #f2f2f2;
+}
+
+.units {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+  .btn {
+    padding: 5px;
+  }
+  .btn-selected {
+    background-color: #fff;
+    border-radius: 5px;
+  }
+}
+
+.buttons-container {
+  background-color: #ececed;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.current-container {
+  padding-top: 30px;
+}
+.container {
+  display: grid;
+  grid-gap: 16pt;
+}
