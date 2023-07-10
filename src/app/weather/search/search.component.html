@@ -1,0 +1,15 @@
+<div class="search">
+  <input
+    #searchValue
+    class="search-input"
+    placeholder="Search city"
+    type="text"
+  />
+  <button class="search-btn btn btn-round" (click)="search(searchValue.value)">
+    Search
+  </button>
+</div>
+<p class="sub-not-found">
+  Not found. To make search more precise put the city's name, comma, 2-letter
+  country code (ISO3166).
+</p>

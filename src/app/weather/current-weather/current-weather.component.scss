@@ -1,0 +1,30 @@
+.city-text {
+  margin-top: 0;
+  font-size: 25px;
+  font-weight: 700;
+}
+.current-temp {
+  display: flex;
+  align-items: center;
+  &-value {
+    font-size: 36px;
+    font-weight: 100;
+    margin-right: 8pt;
+  }
+}
+
+.weather-items {
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 20px;
+  padding-left: 16pt;
+  padding-right: 16pt;
+}
+.weather-item {
+  margin-right: 16pt;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  line-height: 25px;
+}
