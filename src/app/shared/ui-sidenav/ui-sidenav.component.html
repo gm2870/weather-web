@@ -1,0 +1,51 @@
+<div class="page" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="header">
+    <div class="nav">
+      <a class="root-link" routerLink="/">
+        <img class="logo" src="assets/images/logo.png" alt="" />
+      </a>
+      <div class="user" *ngIf="!mobileQuery.matches">
+        <span class="username">Ali</span>
+        <button class="user-btn" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/profile" mat-menu-item>My Profile</a>
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+      </div>
+    </div>
+    <div *ngIf="mobileQuery.matches">
+      <button mat-icon-button class="d-flex btn-sm" (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 48 : 0"
+  >
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-sidenav
+      class="sidenav"
+      #snav
+      [opened]="mobileQuery.matches"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="48"
+    >
+      <mat-nav-list>
+        <span mat-list-item class="username">Ali</span>
+        <a mat-list-item routerLink="/profile">My Profile</a>
+        <a mat-list-item routerLink="/logout">Logout</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

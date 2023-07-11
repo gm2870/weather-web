@@ -1,6 +1,6 @@
 .banner {
   display: grid;
-  background: url('/assets/images/summer_banner.jpg') no-repeat;
+  background: url("/assets/images/summer_banner.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   &-container {
@@ -20,6 +20,7 @@
     font-weight: 500;
     color: #48484a;
     padding: 0 10px;
+    margin: 1em 0 !important;
     @media only screen and (min-width: 768px) {
       padding: 0;
     }

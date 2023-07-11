@@ -1,0 +1,75 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.content {
+  background-color: #fff;
+}
+.is-mobile .header {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.header {
+  background-color: #48484a;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  @media only screen and (min-width: 1600px) {
+    max-width: 1440px;
+  }
+}
+.logo {
+  width: 80px;
+  height: 40px;
+}
+.user-btn {
+  color: #fff;
+}
+.user-menu {
+  background-color: #fff;
+  padding: 0;
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+.username {
+  display: block;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.sidenav {
+  .username {
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+}
+.root-link {
+  display: flex;
+  align-items: center;
+}
