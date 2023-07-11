@@ -17,8 +17,11 @@
     ></app-search-dropdown>
   </div>
 </div>
-
-<p class="sub-not-found">
+<p style="color: red" *ngIf="searchErrMsg">{{ searchErrMsg }}</p>
+<p
+  class="sub-not-found"
+  [ngStyle]="{ visibility: searchErrMsg ? 'visible' : 'hidden' }"
+>
   Not found. To make search more precise put the city's name, comma, 2-letter
   country code (ISO3166).
 </p>

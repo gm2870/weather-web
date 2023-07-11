@@ -1,9 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  getCurrentWeatherFailure,
   getCurrentWeatherSuccess,
   onSearchWeather,
   setWeatherFromSearchResult,
   setWeatherUnits,
+  weatherSearchedFailure,
   weatherSearchedSuccess,
 } from './weather.actions';
 import { CurrentWeather } from './weather.models';
@@ -13,6 +15,7 @@ export interface WeatherState {
   units: string;
   queryString: string;
   loading: boolean;
+  errorMsg: string;
 }
 export const initialState: WeatherState = {
   currentWeather: null,
@@ -20,6 +23,7 @@ export const initialState: WeatherState = {
   units: 'metric',
   queryString: 'Kingdom of Belgium',
   loading: true,
+  errorMsg: '',
 };
 
 export const weatherReducer = createReducer(
@@ -30,6 +34,7 @@ export const weatherReducer = createReducer(
       ...state,
       queryString: action.q,
       loading: true,
+      errorMsg: '',
     };
     return newState;
   }),
@@ -39,6 +44,26 @@ export const weatherReducer = createReducer(
       ...state,
       searchResult: action.weather,
       loading: false,
+    };
+    return newState;
+  }),
+
+  on(getCurrentWeatherFailure, (state, action) => {
+    const newState = {
+      ...state,
+      searchResult: null,
+      loading: false,
+      errorMsg: action.errorMsg,
+    };
+    return newState;
+  }),
+  on(weatherSearchedFailure, (state, action) => {
+    console.log(action);
+    const newState = {
+      ...state,
+      searchResult: null,
+      loading: false,
+      errorMsg: action.errorMsg,
     };
     return newState;
   }),

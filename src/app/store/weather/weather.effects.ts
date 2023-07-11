@@ -19,9 +19,18 @@ export const searchWeather = createEffect(
       ofType(onSearchWeather),
       exhaustMap((action) =>
         weatherService.searchWeather(action.q, action.units).pipe(
-          map((weather: CurrentWeather) => weatherSearchedSuccess({ weather })),
-          catchError((error: { message: string }) =>
-            of(weatherSearchedFailure({ errorMsg: error.message }))
+          map((weather: CurrentWeather) => {
+            return weatherSearchedSuccess({ weather });
+          }),
+          catchError(
+            (error: {
+              error: { code: string; message: string };
+              message: string;
+            }) => {
+              return of(
+                weatherSearchedFailure({ errorMsg: error.error.message })
+              );
+            }
           )
         )
       )

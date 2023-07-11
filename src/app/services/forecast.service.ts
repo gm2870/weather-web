@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CurrentWeather } from '../store/weather/weather.models';
 import { Forecast } from '../store/forecast/forecast.models';
 
 const OPENWEATHER_API_KEY = '9353f0cc5063e9dae19c477b63e3ece9';

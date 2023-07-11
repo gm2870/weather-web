@@ -31,3 +31,8 @@ export const isLoading = createSelector(
   getWeatherState,
   (state: WeatherState) => state.loading
 );
+
+export const getErrMsg = createSelector(
+  getWeatherState,
+  (state: WeatherState) => state.errorMsg
+);

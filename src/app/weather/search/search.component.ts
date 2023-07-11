@@ -8,6 +8,7 @@ import {
 } from 'src/app/store/weather/weather.actions';
 import { CurrentWeather } from 'src/app/store/weather/weather.models';
 import {
+  getErrMsg,
   getSearchResult,
   getUnits,
 } from 'src/app/store/weather/weather.selectors';
@@ -19,11 +20,13 @@ import {
 })
 export class SearchComponent implements OnInit {
   searchResult$: Observable<CurrentWeather | null>;
+  searchErrMsg: string;
   units: string;
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.select(getUnits).subscribe((units) => (this.units = units));
     this.searchResult$ = this.store.pipe(select(getSearchResult));
+    this.store.select(getErrMsg).subscribe((msg) => (this.searchErrMsg = msg));
   }
   search(q: string) {
     this.store.dispatch(onSearchWeather({ q, units: this.units }));
