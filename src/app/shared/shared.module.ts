@@ -57,6 +57,6 @@ const MAT = [
 @NgModule({
   declarations: [UiSidenavComponent],
   imports: [...MAT, RouterModule, CommonModule],
-  exports: [...MAT],
+  exports: [...MAT, CommonModule],
 })
 export class SharedModule {}
