@@ -1,31 +1,47 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { onStartLoading } from 'src/app/store/ui/ui.actions';
-import {
-  getCurrentWeather,
-  onSearchWeather,
-} from 'src/app/store/weather/weather.actions';
+import { getCurrentWeather } from 'src/app/store/weather/weather.actions';
 import { CurrentWeather } from 'src/app/store/weather/weather.models';
 import {
   getCurrentResult,
-  getSearchResult,
+  getUnits,
+  getWeatherState,
 } from 'src/app/store/weather/weather.selectors';
+import { IMPERIAL_UNIT, METRIC_UNIT } from '../constants';
+import { WeatherState } from 'src/app/store/weather/weather.reducer';
+import { getUnitStrings } from '../utils/utils';
 @Component({
   selector: 'app-current-weather',
   templateUrl: './current-weather.component.html',
   styleUrls: ['./current-weather.component.scss'],
 })
 export class CurrentWeatherComponent {
-  weather: CurrentWeather;
+  readonly IMPERIAL_UNIT = IMPERIAL_UNIT;
+  readonly METRIC_UNIT = METRIC_UNIT;
+  private weatherState: WeatherState;
+
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.dispatch(onStartLoading({ loading: true }));
-
-    this.store.pipe(select(getCurrentResult)).subscribe((w) => {
-      w && this.store.dispatch(onStartLoading({ loading: false }));
-      this.weather = w;
+    this.store.pipe(select(getWeatherState)).subscribe((w) => {
+      w.currentWeather &&
+        this.store.dispatch(onStartLoading({ loading: false }));
+      this.weatherState = w;
     });
-    this.store.dispatch(getCurrentWeather({ q: 'London' }));
+
+    this.store.dispatch(
+      getCurrentWeather({
+        q: this.weatherState.queryString,
+        units: this.weatherState.units,
+      })
+    );
+  }
+  get weather() {
+    return this.weatherState.currentWeather;
+  }
+  get _unit() {
+    return getUnitStrings(this.weatherState.units);
   }
   get currentDate() {
     return new Date();

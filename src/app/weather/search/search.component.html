@@ -1,18 +1,19 @@
 <div class="search">
   <input
-    #searchValue
+    #searchInput
     class="search-input"
     placeholder="Search city"
     type="text"
   />
-  <button class="search-btn btn btn-round" (click)="search(searchValue.value)">
+  <button class="search-btn btn btn-round" (click)="search(searchInput.value)">
     Search
   </button>
 
-  <div class="search-result" *ngIf="weather">
+  <div class="search-result" *ngIf="searchResult$ | async as weather">
     <app-search-dropdown
       (changeCurrentWeather)="changeCurrentWeather()"
       [weather]="weather"
+      [units]="units"
     ></app-search-dropdown>
   </div>
 </div>

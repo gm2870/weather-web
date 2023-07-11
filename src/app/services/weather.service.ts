@@ -14,12 +14,11 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   private getBaseUrl() {
-    return `${API_END_POINT}${this.model}?appid=${OPENWEATHER_API_KEY}&units=metric`;
+    return `${API_END_POINT}${this.model}?appid=${OPENWEATHER_API_KEY}`;
   }
 
-  searchWeather(searchValue: string) {
-    const url = `${this.getBaseUrl()}&q=${searchValue}`;
-    console.log(url);
+  searchWeather(searchValue: string, units: string) {
+    const url = `${this.getBaseUrl()}&q=${searchValue}&units=${units}`;
     return this.http.get<CurrentWeather>(url);
   }
 }

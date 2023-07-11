@@ -6,10 +6,11 @@
   <div class="weather-info">
     <div class="current-temp">
       <img style="width: 40px" src="assets/images/few-clouds.svg" alt="" />
-      <span class="current-temp-value">{{ weather.main.temp }}°F</span>
+      <span class="current-temp-value">{{ weather.main.temp }}{{ _unit }}</span>
     </div>
     <p class="bold">
-      Feels like {{ weather.main.feels_like }}°F. Overcast clouds. Light breeze
+      Feels like {{ weather.main.feels_like }}{{ _unit }}. Overcast clouds.
+      Light breeze
     </p>
     <ul class="weather-items orange-side">
       <li class="weather-item">{{ weather.wind.speed }}mph SSW</li>
@@ -18,7 +19,7 @@
         <span>Humidity:</span>{{ weather.main.humidity }}%
       </li>
       <li class="weather-item"><span>UV:</span>3</li>
-      <li class="weather-item"><span>Dew point:</span>54°F</li>
+      <li class="weather-item"><span>Dew point:</span>54{{ _unit }}</li>
       <li class="weather-item">
         <span>Visibility:</span>{{ weather.visibility / 1000 }}km
       </li>

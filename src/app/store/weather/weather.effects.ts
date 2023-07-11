@@ -6,6 +6,7 @@ import {
   getCurrentWeatherFailure,
   getCurrentWeatherSuccess,
   onSearchWeather,
+  setWeatherUnits,
   weatherSearchedFailure,
   weatherSearchedSuccess,
 } from './weather.actions';
@@ -17,7 +18,7 @@ export const searchWeather = createEffect(
     return actions$.pipe(
       ofType(onSearchWeather),
       exhaustMap((action) =>
-        weatherService.searchWeather(action.q).pipe(
+        weatherService.searchWeather(action.q, action.units).pipe(
           map((weather: CurrentWeather) => weatherSearchedSuccess({ weather })),
           catchError((error: { message: string }) =>
             of(weatherSearchedFailure({ errorMsg: error.message }))
@@ -31,9 +32,9 @@ export const searchWeather = createEffect(
 export const getWeather = createEffect(
   (actions$ = inject(Actions), weatherService = inject(WeatherService)) => {
     return actions$.pipe(
-      ofType(getCurrentWeather),
+      ofType(getCurrentWeather, setWeatherUnits),
       exhaustMap((action) =>
-        weatherService.searchWeather(action.q).pipe(
+        weatherService.searchWeather(action.q, action.units).pipe(
           map((weather: CurrentWeather) =>
             getCurrentWeatherSuccess({ weather })
           ),

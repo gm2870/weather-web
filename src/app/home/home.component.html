@@ -18,11 +18,19 @@
       <app-search></app-search>
       <div class="units">
         <div class="buttons-container">
-          <button class="btn">
+          <button
+            class="btn"
+            [ngClass]="{ 'btn-selected': (units$ | async) === 'metric' }"
+            (click)="changeUnits('metric')"
+          >
             <span>Metric: </span>
             <span>°C, m/s</span>
           </button>
-          <button class="btn btn-selected">
+          <button
+            class="btn"
+            [ngClass]="{ 'btn-selected': (units$ | async) === 'imperial' }"
+            (click)="changeUnits('imperial')"
+          >
             <span>Imperial: </span>
             <span>°F, mph</span>
           </button>

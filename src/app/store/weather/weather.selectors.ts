@@ -11,3 +11,12 @@ export const getCurrentResult = createSelector(
   getWeatherState,
   (state: WeatherState) => state.currentWeather
 );
+export const getQueryString = createSelector(
+  getWeatherState,
+  (state: WeatherState) => state.queryString
+);
+
+export const getUnits = createSelector(
+  getWeatherState,
+  (state: WeatherState) => state.units
+);
