@@ -7,3 +7,7 @@ export const getSearchResult = createSelector(
   getWeatherState,
   (state: WeatherState) => state.searchResult
 );
+export const getCurrentResult = createSelector(
+  getWeatherState,
+  (state: WeatherState) => state.currentWeather
+);

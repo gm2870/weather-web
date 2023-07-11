@@ -1,0 +1,22 @@
+<div class="dropdown" (click)="changeCurrentWeather.emit()">
+  <div class="country">
+    <span>{{ weather.name }},</span>
+    <span>{{ weather.sys.country }}</span>
+    <img
+      class="country-img"
+      src="{{
+        'https://openweathermap.org/images/flags/' +
+          weather.sys.country.toLowerCase() +
+          '.png'
+      }}"
+      alt=""
+    />
+  </div>
+  <div>
+    <span>{{ weather.main.temp }}</span>
+  </div>
+  <div class="coord">
+    <span>{{ weather.coord.lat }},</span>
+    <span>{{ weather.coord.lon }}</span>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { searchWeatherStarted } from 'src/app/store/weather/weather.actions';
+import {
+  onSearchWeather,
+  setWeatherFromSearchResult,
+} from 'src/app/store/weather/weather.actions';
 import { CurrentWeather } from 'src/app/store/weather/weather.models';
 import { getSearchResult } from 'src/app/store/weather/weather.selectors';
 
@@ -11,12 +13,17 @@ import { getSearchResult } from 'src/app/store/weather/weather.selectors';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  weather$: Observable<CurrentWeather>;
+  weather: CurrentWeather;
   constructor(private store: Store) {}
   ngOnInit(): void {
-    this.weather$ = this.store.pipe(select(getSearchResult));
+    this.store
+      .pipe(select(getSearchResult))
+      .subscribe((w) => (this.weather = w));
   }
   search(q: string) {
-    this.store.dispatch(searchWeatherStarted({ q }));
+    this.store.dispatch(onSearchWeather({ q }));
+  }
+  changeCurrentWeather() {
+    this.store.dispatch(setWeatherFromSearchResult());
   }
 }

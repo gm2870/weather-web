@@ -2,7 +2,10 @@ import { inject } from '@angular/core';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
-  searchWeatherStarted,
+  getCurrentWeather,
+  getCurrentWeatherFailure,
+  getCurrentWeatherSuccess,
+  onSearchWeather,
   weatherSearchedFailure,
   weatherSearchedSuccess,
 } from './weather.actions';
@@ -12,7 +15,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 export const searchWeather = createEffect(
   (actions$ = inject(Actions), weatherService = inject(WeatherService)) => {
     return actions$.pipe(
-      ofType(searchWeatherStarted),
+      ofType(onSearchWeather),
       exhaustMap((action) =>
         weatherService.searchWeather(action.q).pipe(
           map((weather: CurrentWeather) => weatherSearchedSuccess({ weather })),
@@ -25,7 +28,24 @@ export const searchWeather = createEffect(
   },
   { functional: true }
 );
-
+export const getWeather = createEffect(
+  (actions$ = inject(Actions), weatherService = inject(WeatherService)) => {
+    return actions$.pipe(
+      ofType(getCurrentWeather),
+      exhaustMap((action) =>
+        weatherService.searchWeather(action.q).pipe(
+          map((weather: CurrentWeather) =>
+            getCurrentWeatherSuccess({ weather })
+          ),
+          catchError((error: { message: string }) =>
+            of(getCurrentWeatherFailure({ errorMsg: error.message }))
+          )
+        )
+      )
+    );
+  },
+  { functional: true }
+);
 // export const displayErrorAlert = createEffect(
 //   () => {
 //     return inject(Actions).pipe(

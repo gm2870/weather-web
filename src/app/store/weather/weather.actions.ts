@@ -8,20 +8,22 @@ import { CurrentWeather } from './weather.models';
 export const WeatherActions = createActionGroup({
   source: 'Weather',
   events: {
-    searchWeatherStarted: props<{ q: string }>(),
+    onSearchWeather: props<{ q: string }>(),
+    getCurrentWeather: props<{ q: string }>(),
     weatherSearchedSuccess: props<{ weather: CurrentWeather }>(),
-
     weatherSearchedFailure: props<{ errorMsg: string }>(),
     getCurrentWeatherSuccess: props<{ weather: CurrentWeather }>(),
-
+    setWeatherFromSearchResult: emptyProps(),
     getCurrentWeatherFailure: props<{ errorMsg: string }>(),
   },
 });
 
 export const {
-  searchWeatherStarted,
+  onSearchWeather,
+  getCurrentWeather,
   weatherSearchedSuccess,
   weatherSearchedFailure,
   getCurrentWeatherSuccess,
   getCurrentWeatherFailure,
+  setWeatherFromSearchResult,
 } = WeatherActions;

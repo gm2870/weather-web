@@ -1,7 +1,7 @@
 .search {
   display: flex;
   padding: 0 10px;
-
+  position: relative;
   &-input {
     border: 1px solid #ececed;
     border-radius: 4pt;
@@ -32,6 +32,11 @@
   }
   @media only screen and (min-width: 768px) {
     padding: 0;
+  }
+  &-result {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
   }
 }
 

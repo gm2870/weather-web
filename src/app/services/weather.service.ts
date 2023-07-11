@@ -14,7 +14,7 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   private getBaseUrl() {
-    return `${API_END_POINT}${this.model}?appid=${OPENWEATHER_API_KEY}`;
+    return `${API_END_POINT}${this.model}?appid=${OPENWEATHER_API_KEY}&units=metric`;
   }
 
   searchWeather(searchValue: string) {

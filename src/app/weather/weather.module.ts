@@ -5,6 +5,7 @@ import { SearchComponent } from './search/search.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from '../home/home.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { SearchDropdownComponent } from './search/search-dropdown/search-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { CurrentWeatherComponent } from './current-weather/current-weather.compo
     SearchComponent,
     HomeComponent,
     CurrentWeatherComponent,
+    SearchDropdownComponent,
   ],
   imports: [SharedModule],
 })

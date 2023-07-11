@@ -8,7 +8,7 @@ export interface CurrentWeather {
   coord: Coord;
   weather: Weather[];
   base: string;
-  main: MainInfo[];
+  main: MainInfo;
   timezone: number;
   name: string;
   id: number;
@@ -23,6 +23,7 @@ export interface CurrentWeather {
     sunrise: number;
     sunset: number;
   };
+  visibility: number;
 }
 export interface Wind {
   speed: number;
