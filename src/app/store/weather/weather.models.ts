@@ -47,31 +47,6 @@ export interface Clouds {
 export interface Sys {
   pod: string;
 }
-export interface ForecastItem {
-  dt: number;
-  main: MainInfo;
-  weather: Weather[];
-  coulds: Clouds;
-}
-
-export interface Forecast {
-  cod: string;
-  message: number;
-  cnt: number;
-  list: ForecastItem[];
-  city: City;
-}
-
-export interface City {
-  id: number;
-  name: string;
-  country: string;
-  coord: Coord;
-  population: number;
-  timezone: number;
-  sunrise: number;
-  sunset: number;
-}
 
 export interface Coord {
   lat: number;

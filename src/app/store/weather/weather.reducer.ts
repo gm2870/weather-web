@@ -8,16 +8,18 @@ import {
 } from './weather.actions';
 import { CurrentWeather } from './weather.models';
 export interface WeatherState {
-  currentWeather: CurrentWeather;
-  searchResult: CurrentWeather;
+  currentWeather: CurrentWeather | null;
+  searchResult: CurrentWeather | null;
   units: string;
   queryString: string;
+  loading: boolean;
 }
-export const initialState: any = {
+export const initialState: WeatherState = {
   currentWeather: null,
   searchResult: null,
   units: 'metric',
   queryString: 'Kingdom of Belgium',
+  loading: true,
 };
 
 export const weatherReducer = createReducer(
@@ -27,6 +29,7 @@ export const weatherReducer = createReducer(
     const newState = {
       ...state,
       queryString: action.q,
+      loading: true,
     };
     return newState;
   }),
@@ -35,6 +38,7 @@ export const weatherReducer = createReducer(
     const newState = {
       ...state,
       searchResult: action.weather,
+      loading: false,
     };
     return newState;
   }),
@@ -42,6 +46,7 @@ export const weatherReducer = createReducer(
     const newState = {
       ...state,
       currentWeather: action.weather,
+      loading: false,
     };
     return newState;
   }),
@@ -50,6 +55,7 @@ export const weatherReducer = createReducer(
       ...state,
       searchResult: null,
       currentWeather: state.searchResult,
+      loading: false,
     };
     return newState;
   }),
@@ -57,7 +63,7 @@ export const weatherReducer = createReducer(
     const newState = {
       ...state,
       units: action.units,
-      searchResult: null,
+      loading: true,
     };
     return newState;
   })

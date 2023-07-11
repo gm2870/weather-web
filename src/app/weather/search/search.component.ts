@@ -18,7 +18,7 @@ import {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  searchResult$: Observable<CurrentWeather>;
+  searchResult$: Observable<CurrentWeather | null>;
   units: string;
   constructor(private store: Store) {}
   ngOnInit(): void {
@@ -26,8 +26,6 @@ export class SearchComponent implements OnInit {
     this.searchResult$ = this.store.pipe(select(getSearchResult));
   }
   search(q: string) {
-    this.store.dispatch(onStartLoading({ loading: true }));
-
     this.store.dispatch(onSearchWeather({ q, units: this.units }));
   }
   changeCurrentWeather() {

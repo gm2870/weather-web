@@ -1,9 +1,12 @@
 <div class="daily-weather-item">
-  <span class="date">Sun, Jul 09</span>
+  <span class="date">{{ forecastItem.dt_txt | date }}</span>
   <div class="daily-item-values">
     <img src="assets/images/moderate-rain.svg" alt="" />
-    <span>72 / 63°F</span>
+    <span
+      >{{ forecastItem.main.temp_max }} / {{ forecastItem.main.temp_min
+      }}{{ unitStrings }}</span
+    >
   </div>
-  <div class="daily-item-text">moderate rain</div>
+  <div class="daily-item-text">{{ forecastItem.weather[0].description }}</div>
   <mat-icon>arrow_drop_down</mat-icon>
 </div>

@@ -23,10 +23,7 @@ export class CurrentWeatherComponent {
 
   constructor(private store: Store) {}
   ngOnInit(): void {
-    this.store.dispatch(onStartLoading({ loading: true }));
     this.store.pipe(select(getWeatherState)).subscribe((w) => {
-      w.currentWeather &&
-        this.store.dispatch(onStartLoading({ loading: false }));
       this.weatherState = w;
     });
 

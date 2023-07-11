@@ -20,3 +20,14 @@ export const getUnits = createSelector(
   getWeatherState,
   (state: WeatherState) => state.units
 );
+export const getQueryAndUnits = createSelector(
+  getWeatherState,
+  (state: WeatherState) => ({
+    units: state.units,
+    q: state.queryString,
+  })
+);
+export const isLoading = createSelector(
+  getWeatherState,
+  (state: WeatherState) => state.loading
+);

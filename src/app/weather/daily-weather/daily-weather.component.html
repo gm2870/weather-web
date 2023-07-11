@@ -1,19 +1,11 @@
-<h1 class="header">8-day forecast</h1>
+<h1 class="header">day forecast</h1>
 <ul class="daily-weather-list">
-  <!-- <ng-container *ngFor="let "></ng-container> -->
-  <li>
-    <app-daily-weather-item></app-daily-weather-item>
-  </li>
-  <li>
-    <app-daily-weather-item></app-daily-weather-item>
-  </li>
-  <li>
-    <app-daily-weather-item></app-daily-weather-item>
-  </li>
-  <li>
-    <app-daily-weather-item></app-daily-weather-item>
-  </li>
-  <li>
-    <app-daily-weather-item></app-daily-weather-item>
-  </li>
+  <ng-container *ngFor="let forecastItem of forecastList">
+    <li>
+      <app-daily-weather-item
+        [units]="units"
+        [forecastItem]="forecastItem"
+      ></app-daily-weather-item>
+    </li>
+  </ng-container>
 </ul>

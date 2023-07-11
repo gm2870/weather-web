@@ -45,7 +45,10 @@
       <app-current-weather></app-current-weather>
     </div>
     <div class="daily-container">
-      <app-daily-weather></app-daily-weather>
+      <app-daily-weather
+        [units]="weatherInfo.units"
+        [q]="weatherInfo.q"
+      ></app-daily-weather>
     </div>
   </div>
 </div>

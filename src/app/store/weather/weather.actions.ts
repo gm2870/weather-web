@@ -1,7 +1,3 @@
-// import { createAction } from '@ngrx/store';
-
-// export const search = createAction('[Search Component] Search');
-// export const getCurrent = createAction('[Weather Component] GetCurrent');
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { CurrentWeather } from './weather.models';
 
