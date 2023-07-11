@@ -12,6 +12,7 @@ import { weatherReducer } from './store/weather/weather.reducer';
 import * as weatherEffects from './store/weather/weather.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { uiReducer } from './store/ui/ui.reducers';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +22,7 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     WeatherModule,
     SharedModule,
-    StoreModule.forRoot({ weather: weatherReducer }),
+    StoreModule.forRoot({ weather: weatherReducer, ui: uiReducer }),
     EffectsModule.forRoot(weatherEffects),
   ],
   providers: [WeatherService],

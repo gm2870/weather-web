@@ -26,6 +26,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UiSidenavComponent } from './ui-sidenav/ui-sidenav.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
 
 const MAT = [
   MatDialogModule,
@@ -53,10 +55,11 @@ const MAT = [
   MatTooltipModule,
   MatSliderModule,
   MatToolbarModule,
+  MatProgressSpinnerModule,
 ];
 @NgModule({
-  declarations: [UiSidenavComponent],
+  declarations: [UiSidenavComponent, LoaderComponent],
   imports: [...MAT, RouterModule, CommonModule],
-  exports: [...MAT, CommonModule],
+  exports: [...MAT, CommonModule, LoaderComponent],
 })
 export class SharedModule {}

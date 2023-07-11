@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { onStartLoading } from 'src/app/store/ui/ui.actions';
 import {
   getCurrentWeather,
   onSearchWeather,
@@ -18,9 +19,12 @@ export class CurrentWeatherComponent {
   weather: CurrentWeather;
   constructor(private store: Store) {}
   ngOnInit(): void {
-    this.store
-      .pipe(select(getCurrentResult))
-      .subscribe((w) => (this.weather = w));
+    this.store.dispatch(onStartLoading({ loading: true }));
+
+    this.store.pipe(select(getCurrentResult)).subscribe((w) => {
+      w && this.store.dispatch(onStartLoading({ loading: false }));
+      this.weather = w;
+    });
     this.store.dispatch(getCurrentWeather({ q: 'London' }));
   }
   get currentDate() {
