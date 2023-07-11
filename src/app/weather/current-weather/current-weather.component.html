@@ -1,19 +1,27 @@
-<div class="header">
-  <div class="orange-text">Jul 9, 11:22am</div>
-  <p class="city-text">London, GB</p>
-</div>
-<div class="weather-info">
-  <div class="current-temp">
-    <img style="width: 40px" src="assets/images/few-clouds.svg" alt="" />
-    <span class="current-temp-value">68°F</span>
+<ng-container *ngIf="weather">
+  <div class="header">
+    <div class="orange-text">{{ currentDate | date }} {{ time }}</div>
+    <p class="city-text">{{ weather.name }}, {{ weather.sys.country }}</p>
   </div>
-  <p class="bold">Feels like 68°F. Overcast clouds. Light breeze</p>
-  <ul class="weather-items orange-side">
-    <li class="weather-item">6.9mph SSW</li>
-    <li class="weather-item">1018hPa</li>
-    <li class="weather-item"><span>Humidity:</span>61%</li>
-    <li class="weather-item"><span>UV:</span>3</li>
-    <li class="weather-item"><span>Dew point:</span>54°F</li>
-    <li class="weather-item"><span>Visibility:</span>10.0km</li>
-  </ul>
-</div>
+  <div class="weather-info">
+    <div class="current-temp">
+      <img style="width: 40px" src="assets/images/few-clouds.svg" alt="" />
+      <span class="current-temp-value">{{ weather.main.temp }}°F</span>
+    </div>
+    <p class="bold">
+      Feels like {{ weather.main.feels_like }}°F. Overcast clouds. Light breeze
+    </p>
+    <ul class="weather-items orange-side">
+      <li class="weather-item">{{ weather.wind.speed }}mph SSW</li>
+      <li class="weather-item">{{ weather.main.pressure }}hPa</li>
+      <li class="weather-item">
+        <span>Humidity:</span>{{ weather.main.humidity }}%
+      </li>
+      <li class="weather-item"><span>UV:</span>3</li>
+      <li class="weather-item"><span>Dew point:</span>54°F</li>
+      <li class="weather-item">
+        <span>Visibility:</span>{{ weather.visibility / 1000 }}km
+      </li>
+    </ul>
+  </div>
+</ng-container>
