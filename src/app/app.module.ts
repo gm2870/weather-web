@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { WeatherModule } from './weather/weather.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserAnimationsModule,
     WeatherModule,
     SharedModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],
