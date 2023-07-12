@@ -4,7 +4,7 @@
     <br />
     <div class="text">
       <h1 class="banner-header orange-text">OpenWeather</h1>
-      <p class="banner-description">
+      <p i18n class="banner-description">
         Weather forecasts, nowcasts and history in a fast and elegant way
       </p>
     </div>
@@ -23,7 +23,7 @@
             [ngClass]="{ 'btn-selected': (units$ | async) === 'metric' }"
             (click)="changeUnits('metric')"
           >
-            <span>Metric: </span>
+            <span i18n>Metric: </span>
             <span>°C, m/s</span>
           </button>
           <button
@@ -31,7 +31,7 @@
             [ngClass]="{ 'btn-selected': (units$ | async) === 'imperial' }"
             (click)="changeUnits('imperial')"
           >
-            <span>Imperial: </span>
+            <span i18n>Imperial: </span>
             <span>°F, mph</span>
           </button>
         </div>

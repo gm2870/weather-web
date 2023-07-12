@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6926185228405214968" datatype="html">
+        <source> Weather forecasts, nowcasts and history in a fast and elegant way </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3509237392699634178" datatype="html">
+        <source>Metric: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3784245891047342909" datatype="html">
+        <source>Imperial: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5623317444349732948" datatype="html">
+        <source>day forecast</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/weather/daily-weather/daily-weather.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2212695292809375179" datatype="html">
+        <source> Search </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/weather/search/search.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
