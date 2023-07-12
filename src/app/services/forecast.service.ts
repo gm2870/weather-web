@@ -18,7 +18,7 @@ export class ForecastService {
   }
 
   getForecast(q: string, units: string) {
-    const url = `${this.getBaseUrl()}&q=${q}&units=${units}&cnt=5`;
+    const url = `${this.getBaseUrl()}&q=${q}&units=${units}&cnt=8`;
     return this.http.get<Forecast>(url);
   }
 }

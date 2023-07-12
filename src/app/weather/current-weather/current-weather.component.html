@@ -9,8 +9,8 @@
       <span class="current-temp-value">{{ weather.main.temp }}{{ _unit }}</span>
     </div>
     <p class="bold">
-      Feels like {{ weather.main.feels_like }}{{ _unit }}. Overcast clouds.
-      Light breeze
+      Feels like {{ weather.main.feels_like }}{{ _unit }}.
+      {{ weather.weather[0].description }}
     </p>
     <ul class="weather-items orange-side">
       <li class="weather-item">{{ weather.wind.speed }}mph SSW</li>

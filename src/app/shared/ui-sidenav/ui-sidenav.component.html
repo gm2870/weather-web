@@ -16,7 +16,11 @@
       </div>
     </div>
     <div *ngIf="mobileQuery.matches">
-      <button mat-icon-button class="d-flex btn-sm" (click)="snav.toggle()">
+      <button
+        mat-icon-button
+        class="menu-btn d-flex btn-sm"
+        (click)="snav.toggle()"
+      >
         <mat-icon>menu</mat-icon>
       </button>
     </div>
