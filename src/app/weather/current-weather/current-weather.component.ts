@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { onStartLoading } from 'src/app/store/ui/ui.actions';
 import { getCurrentWeather } from 'src/app/store/weather/weather.actions';
-import { CurrentWeather } from 'src/app/store/weather/weather.models';
-import {
-  getCurrentResult,
-  getUnits,
-  getWeatherState,
-} from 'src/app/store/weather/weather.selectors';
+import { getWeatherState } from 'src/app/store/weather/weather.selectors';
 import { IMPERIAL_UNIT, METRIC_UNIT } from '../constants';
 import { WeatherState } from 'src/app/store/weather/weather.reducer';
 import { getUnitStrings } from '../utils/utils';

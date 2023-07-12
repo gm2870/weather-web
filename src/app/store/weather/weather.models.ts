@@ -24,6 +24,7 @@ export interface CurrentWeather {
     sunset: number;
   };
   visibility: number;
+  date: Date;
 }
 export interface Wind {
   speed: number;

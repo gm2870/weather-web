@@ -1,17 +1,8 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { ForecastService } from 'src/app/services/forecast.service';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { getForecastStart } from 'src/app/store/forecast/forecast.actions';
-import { Forecast, ForecastItem } from 'src/app/store/forecast/forecast.models';
+import { ForecastItem } from 'src/app/store/forecast/forecast.models';
 import { getForecastResult } from 'src/app/store/forecast/forecast.selectors';
-import { CurrentWeather } from 'src/app/store/weather/weather.models';
 
 @Component({
   selector: 'app-daily-weather',
