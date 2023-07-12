@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,13 +7,15 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { WeatherService } from './services/weather.service';
 import { weatherReducer } from './store/weather/weather.reducer';
 import * as weatherEffects from './store/weather/weather.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { uiReducer } from './store/ui/ui.reducers';
 import { forecastReducer } from './store/forecast/forecast.reducers';
 import * as forecastEffects from './store/forecast/forecast.effects';
+import * as Sentry from '@sentry/angular-ivy';
+import { Router } from '@angular/router';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,7 +32,24 @@ import * as forecastEffects from './store/forecast/forecast.effects';
     }),
     EffectsModule.forRoot(weatherEffects, forecastEffects),
   ],
-  providers: [WeatherService],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

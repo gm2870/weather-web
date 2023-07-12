@@ -18,11 +18,9 @@ export const forecastReducer = createReducer(
   initialState,
 
   on(getForecastStart, (state, action) => {
-    console.log('getForecastStart');
     return state;
   }),
   on(getForecastSuccess, (state, action) => {
-    console.log('getForecastSuccess');
     return {
       ...state,
       forecast: action.forecast,
