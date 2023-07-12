@@ -38,8 +38,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "i18nMissingTranslation": "error",
-            "localize": true
+            "i18nMissingTranslation": "error"
           },
           "configurations": {
             "production": {
@@ -55,7 +54,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "localize": true
             },
             "development": {
               "buildOptimizer": false,
@@ -63,7 +63,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "localize": false
             },
             "fr": {
               "localize": ["fr"]
@@ -79,6 +80,9 @@
             },
             "development": {
               "browserTarget": "weather-app:build:development"
+            },
+            "en": {
+              "browserTarget": "weather-app:build:development,en"
             },
             "fr": {
               "browserTarget": "weather-app:build:development,fr"
